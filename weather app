@@ -1,0 +1,12 @@
+import requests
+import json
+
+city = input("enter name of city:\n")
+api_key = os.getenv("weather_api_key")
+url = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={city}"
+
+r= requests.get(url)
+
+wdic=json.loads(r.text)
+w = wdic["current"]["temp_c"]
+print(f"the current weather in {city} is {w} degrees")
